@@ -28,8 +28,9 @@ public class CommentRepository {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
         ) {
+//            System.out.println(comment.getComment());
             statement.setString(1, comment.getComment());
-            statement.execute(query);
+            statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
