@@ -53,7 +53,7 @@
                 <label th:for="4">4</label>
                 <input th:type="radio" th:id="5" th:name="rating" value="5">
                 <label th:for="5">5</label>
-                <button id="rateBook" class="btn btn-primary mt-2" type="submit">Rate</button>
+                <button id="rateBook" class="btn btn-primary mt-2" type="submit" th:disabled="${not #authorization.expression('hasAuthority(''RATE_BOOK'')')}">Rate</button>
             </div>
         </form>
     </div>
@@ -68,8 +68,10 @@
             <input type="hidden" th:id="userId" th:name="userId" th:value="1">
             <label th:for="addComment">Add comment</label>
             <textarea class="form-control" th:id="addComment" th:name="comment" rows="3"
-                      placeholder="Comment..."></textarea>
-            <button id="createComment" class="btn btn-primary mt-2" type="submit">Create comment</button>
+                      placeholder="Comment..."
+                      th:disabled="${not #authorization.expression('hasAuthority(''ADD_COMMENT'')')}"></textarea>
+            <button id="createComment" class="btn btn-primary mt-2" type="submit"
+                    th:disabled="${not #authorization.expression('hasAuthority(''ADD_COMMENT'')')}">Create comment</button>
         </form>
     </div>
 </div>

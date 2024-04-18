@@ -8,6 +8,7 @@ import com.urosdragojevic.realbookstore.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,7 @@ public class PersonsController {
     }
 
     @GetMapping("/persons/{id}")
+    @PreAuthorize("hasAuthority('VIEW_PERSON'")
     public String person(@PathVariable int id, Model model) {
         model.addAttribute("person", personRepository.get("" + id));
         return "person";

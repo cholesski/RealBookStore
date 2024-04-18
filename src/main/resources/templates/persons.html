@@ -36,7 +36,7 @@
             <td th:text="${person.firstName}"></td>
             <td th:text="${person.lastName}"></td>
             <td th:text="${person.email}"></td>
-            <td><a th:href="@{/persons/{id}(id=${person.id})}">View profile</a></td>
+            <td><a th:href="@{/persons/{id}(id=${person.id})}" class="btn btn-primary" th:classappend="${not #authorization.expression('hasAuthority(''VIEW_PERSON'')')}? 'disabled'">View profile</a></td>
         </tr>
         </tbody>
     </table>
