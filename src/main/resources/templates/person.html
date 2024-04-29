@@ -26,6 +26,7 @@
                 <input type="text" name="email" class="form-control" id="email" th:value="${person.email}">
             </div>
             <input type="hidden" name="id" class="form-control" id="id" th:value="${person.id}">
+            <input type="hidden" name="csrfToken" th:value="${CSRF_TOKEN}">
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>

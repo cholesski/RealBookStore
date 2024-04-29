@@ -8,7 +8,7 @@ insert into persons(firstName, lastName, email)
 values ('Bruce', 'Wayne', 'notBatman@gmail.com'),
        ('Sam', 'Vimes', 'night-watch@gmail.com'),
        ('Tom', 'Riddle', 'theyGotMyNose@gmail.com'),
-       ('Quentin', 'Tarantino', 'qt5@gmail.com'),
+       ('Quentin', 'Tarantino', 'qt5@gmail.com');
 
 insert into books(title, description, author)
 values ('The Lord of the Rings', 'Set in Middle-earth, the story began as a sequel to Tolkien''s 1937 children''s book The Hobbit, but eventually developed into a much larger work.', 'J.R.R. Tolkien'),
