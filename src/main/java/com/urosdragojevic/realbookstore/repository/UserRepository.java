@@ -1,5 +1,6 @@
 package com.urosdragojevic.realbookstore.repository;
 
+import com.urosdragojevic.realbookstore.audit.AuditLogger;
 import com.urosdragojevic.realbookstore.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,7 @@ public class UserRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            LOG.warn("failed findind user with username " + username);
         }
         return null;
     }
@@ -60,5 +62,6 @@ public class UserRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        AuditLogger.getAuditLogger(UserRepository.class).audit("deleted user with id " + userId);
     }
 }
