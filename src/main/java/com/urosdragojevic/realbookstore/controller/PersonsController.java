@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +45,7 @@ public class PersonsController {
         return "person";
     }
 
+
     @GetMapping("/myprofile")
     public String self(Model model, Authentication authentication) {
         User user = (User) authentication.getPrincipal();
@@ -58,9 +62,22 @@ public class PersonsController {
     }
 
     @PostMapping("/update-person")
+    @PreAuthorize("hasAuthority('UPDATE_PERSON')")
     public String updatePerson(Person person, HttpSession session, @RequestParam("csrfToken") String csrfToken) throws AccessDeniedException {
         String csrf = session.getAttribute("CSRF_TOKEN").toString();
-        if (!csrf.equals(csrfToken)) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User current = (User)auth.getPrincipal();
+
+//        for (GrantedAuthority authority : current.getAuthorities()) {
+//            System.out.println(authority.getAuthority());
+//        }
+
+        if (current.getAuthorities().stream().anyMatch(x -> x.getAuthority().equals("UPDATE_PERSON"))) {
+            personRepository.update(person);
+            return "redirect:/persons/" + person.getId();
+        }
+        if(Integer.valueOf(person.getId()) != current.getId()){
             throw new AccessDeniedException("Forbidden");
         }
         personRepository.update(person);
