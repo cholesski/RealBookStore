@@ -7,7 +7,7 @@
           <option name="delegateBuildToMaven" value="false" />
           <option name="environmentProperties">
             <map>
-              <entry key="SONAR_TOKEN" value="&lt;insert_token_here&gt;" />
+              <entry key="SONAR_TOKEN" value="sqa_07ca69747ab9b4f38f914cb2850b996c2e7b93a7" />
             </map>
           </option>
           <option name="jreName" value="#USE_PROJECT_JDK" />
