@@ -33,7 +33,7 @@ public class CommentRepository {
             statement.setString(1, comment.getComment());
             statement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed to insert comment '" + comment + "'");
         }
         AuditLogger.getAuditLogger(CommentRepository.class).audit("inserted comment '" + comment + "'");
@@ -49,7 +49,7 @@ public class CommentRepository {
                 commentList.add(new Comment(rs.getInt(1), rs.getInt(2), rs.getString(3)));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed getting comment list for book with id " + bookId);
         }
         return commentList;

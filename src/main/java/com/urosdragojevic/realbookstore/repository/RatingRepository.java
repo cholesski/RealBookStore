@@ -46,7 +46,7 @@ public class RatingRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.error("rating book failed");
         }
         AuditLogger.getAuditLogger(RatingRepository.class).audit("created/updated rating for book with id " + rating.getBookId());
@@ -62,7 +62,7 @@ public class RatingRepository {
                 ratingList.add(new Rating(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed listing ratings for book with id " + bookId);
         }
         return ratingList;

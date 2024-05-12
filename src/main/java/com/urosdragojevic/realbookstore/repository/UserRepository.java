@@ -35,7 +35,7 @@ public class UserRepository {
                 return new User(id, username1, password);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed findind user with username " + username);
         }
         return null;
@@ -48,7 +48,7 @@ public class UserRepository {
              ResultSet rs = statement.executeQuery(query)) {
             return rs.next();
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return false;
     }
@@ -60,7 +60,7 @@ public class UserRepository {
         ) {
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         AuditLogger.getAuditLogger(UserRepository.class).audit("deleted user with id " + userId);
     }

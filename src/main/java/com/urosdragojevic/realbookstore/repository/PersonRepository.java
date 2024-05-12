@@ -33,7 +33,7 @@ public class PersonRepository {
                 personList.add(createPersonFromResultSet(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.error("Failed getting person list");
         }
         return personList;
@@ -62,7 +62,7 @@ public class PersonRepository {
                 return createPersonFromResultSet(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed getting person with id " + personId);
         }
 
@@ -76,7 +76,7 @@ public class PersonRepository {
         ) {
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed deleting person with id " + personId);
         }
         AuditLogger.getAuditLogger(PersonRepository.class).audit("deleted person with id " + personId);
@@ -103,7 +103,7 @@ public class PersonRepository {
             statement.setString(2, email);
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed updating person with id");
         }
         AuditLogger.getAuditLogger(PersonRepository.class).audit("updated person with id " + personUpdate.getId());

@@ -36,7 +36,7 @@ public class PermissionRepository {
                 permissions.add(new Permission(id, name));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             LOG.warn("failed listing users with role id " + roleId);
         }
         return permissions;
